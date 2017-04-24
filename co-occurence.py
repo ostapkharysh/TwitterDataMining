@@ -20,7 +20,7 @@ with open('stream_president.json', 'r') as f:
         tweet = json.loads(line)
         print(tweet)
         lst_of_data.append((tweet))
-        if (tweet['text']):
+        if 'text' in tweet.keys():
             terms_only = [term for term in preprocess(tweet['text']) if term not in stop and not term.startswith(('@'))]
                       #if #term not in stop and
 
