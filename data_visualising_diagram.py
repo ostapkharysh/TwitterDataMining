@@ -37,7 +37,7 @@ time_chart.to_json('president_term_time_diagram.json')
 
 dates_ELECTION = []
 # f is the file pointer to the JSON data
-f = 'stream_president.json'
+f = 'stream_lviv.json'
 with open(f, 'r') as file:
     for line in file:
         tweet = json.loads(line)
@@ -46,7 +46,7 @@ with open(f, 'r') as file:
             print(terms_hash)
             is_there = False
             for hashword in terms_hash:
-                if "president" in hashword:
+                if hashword.lower().startswith("lviv") or hashword.lower().startswith("Льв"):
                     is_there = True
             if is_there:
                 print("DID")
@@ -63,13 +63,13 @@ print(ones)
 idx = pandas.DatetimeIndex(dates_ELECTION)
 print("INDEX")
 print(idx)
-print(idx[0])
+#print(idx[0])
 
 ELECTION = pandas.Series(ones, index=idx)
 print("ELECTION")
 print(ELECTION)
 # Resampling / bucketing
-per_sec = ELECTION.resample("AS").sum().fillna(0) // "3 S"
+per_sec = ELECTION.resample("1 S").sum().fillna(0) # "3 S"
 print("per_sec")
 for it in per_sec:
     if it == "nan":
@@ -79,4 +79,4 @@ print("time_chart")
 print(time_chart)
 time_chart.axis_titles(x='Time', y='Freq')
 print(time_chart)
-time_chart.to_json('president_time_freq_diagram.json')
+time_chart.to_json('lviv_time_freq_diagram.json')
