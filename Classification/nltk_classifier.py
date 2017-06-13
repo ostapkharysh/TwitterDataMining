@@ -24,6 +24,7 @@ def read_json(filename):
     f = open(filename, 'r', encoding="utf-8")
     lines = f.read()
     lines_lst = lines.split('"]["')
+    f.close()
     changes = []
     tokenizer = nltk.RegexpTokenizer(r'\w+')
     for i in lines_lst:
