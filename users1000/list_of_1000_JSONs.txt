@@ -23,3 +23,4 @@ Volodymyr Ariev = @VolodymyrAriev_1000.json
 Svyatoslav Vakarchuk = @s_vakarchuk_1000.json
 Олег Ляшко = @OVLiashko_1000.json
 Vakhtang Kipiani = @kipiani_1000.json
+Петро Порошенко = @poroshenko_1000.json
