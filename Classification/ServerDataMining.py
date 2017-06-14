@@ -1,12 +1,3 @@
-# To run this code, first edit config.py with your configuration, then:
-#
-# mkdir data
-# python twitter_stream_download.py -q apple -d data
-#
-# python Search_with_symbol.py -q president -d datap
-#
-# It will produce the list of tweets for the query "apple"
-# in the file data/stream_apple.json
 
 from time import gmtime, strftime
 
@@ -100,20 +91,7 @@ def fetchPeople(person):
             auth = OAuthHandler(consumer_key, consumer_secret)
             auth.set_access_token(access_token, access_secret)
             api = tweepy.API(auth)
-            ''''""@Vitaliy_Klychko", "@AvakovArsen", "@YuliaTymoshenko", "@LesyaOrobets",
-                           "@agrytsenko", "@o_tiahnybok", "@Turchynov","@AShevch", "@AndriyParubiy", "@aronets",
-                           "@KyrylenkoVyach", "@mdobkin", "@vo_svoboda", "@oles_doniy", "@VolodymyrAriev", "@Batkivshchyna",
-                           "@KuzhelUA", "@ViktorBaloha", "@Gryshchenko", "@ZoryanShkiryak", "@Sergey_Vlasenko",
-                           "@mihailobrodskiy", "@IvanKulichenko", "@NKorolevska", "@sergiy_odarych", "@unaunso",
-                           "@evgensuslov", "@ivan_plachkov", "@Pylypyshyn", "@AndriySadovyi", "@p_melnyk"] '''
-
-
-
-
-
-            # new_tweets = api.user_timeline(screen_name=screen_name, page=1)
-            # new_tweets = tweepy.models.ResultSet()
-
+            
 
             with open(person + '_ver3.0.json', 'a') as fp:
                 for x in range(1, 1000):
@@ -128,8 +106,7 @@ def fetchPeople(person):
             with open("list_of_JSONs.txt", "a") as mainfile:
                 fullname = api.get_user(person, include_entities=1).name
                 mainfile.write(fullname + ' = ' + person  + '_ver3.0.json' + "\n")
-            #screen_name = screen_name[1:]
-            #if count == len(screen_name):
+                
             return "Done"
         except tweepy.TweepError:
             time.sleep(60*15)
@@ -161,9 +138,4 @@ if __name__ == '__main__':
     print("\n")
     print("FINISH TIME: " + end)
 
-    #print("DURATION: " + strftime("%Y-%m-%d %H:%M:%S", en - bg))
-
-    #twitter_stream = Stream(auth, MyListener(args.query))
-    #     #twitter_stream.filter(status_name= "@MichaelShchur")
-    #print(type(new_tweets))
 
